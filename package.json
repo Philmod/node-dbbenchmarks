@@ -1,0 +1,32 @@
+{
+  "name": "node-dbbenchmark",
+  "version": "0.0.1",
+  "description": "Benchmarks of some databases & clients",
+  "keywords": [
+    "database",
+    "db",
+    "benchmark"
+  ],
+  "author": "Philmod <philippe.modard@gmail.com>",
+  "homepage": "http://github.com/philmod/node-dbbenchmark",
+  "engines": {
+    "node": ">= v0.8.4"
+  },
+  "dependencies": {
+    "benchmark": "1.0.x",
+    "mongodb": "1.1.x",
+    "mongoose": "3.3.x",
+    "mongoskin": "0.4.x",
+    "mongolia": "1.5.x",
+    "nano": "3.3.x",
+    "cradle": "0.6.x",
+    "cassandra-client": "0.9.x"
+
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "main": "index"
+}
