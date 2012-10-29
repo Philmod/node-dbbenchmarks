@@ -5,7 +5,7 @@
 ## Use
 
 ```js
-node index.js
+npm start
 ```
 
 ## Results
