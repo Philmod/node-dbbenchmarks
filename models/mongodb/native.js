@@ -1,8 +1,8 @@
-var mongo = require('mongodb'),
-  Db = mongo.Db;
+var mongo = require('mongodb')
+  , Db = mongo.Db;
 
-var server = new mongo.Server('192.168.107.125', 27017, {auto_reconnect: true});
-var db = new Db('testDB', server, {safe: true});
+var server = new mongo.Server(process.env.npm_package_config_mongodb_host, parseInt(process.env.npm_package_config_mongodb_port), {auto_reconnect: true})
+  , db = new Db(process.env.npm_package_config_DBname, server, {safe: true});
 
 db.open(function(err, db) {
   if (err) throw new Error(err);

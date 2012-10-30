@@ -1,13 +1,6 @@
 var mongo = require('mongoskin');
-var db = mongo.db('localhost:27017/test?auto_reconnect');
+var db = mongo.db('localhost:27017/'+process.env.npm_package_config_DBname+'?auto_reconnect', {safe: true});
 
-db.createCollection(...);
-db.collection('user').ensureIndex([['username', 1]], true, function (err, replies) {});
-db.collection('posts').hint = 'slug';
-db.collection('posts').findOne({slug: 'whats-up'}, function (err, post) {
-  // do something
-});
-
-db.collection('posts').find().toArray(function (err, posts) {
-  // do something
-});
+exports.insert = function(doc,callback) {
+	db.collection('docs',doc,callback);
+};

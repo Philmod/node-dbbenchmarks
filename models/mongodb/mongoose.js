@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-	, db = mongoose.createConnection('192.168.107.125', 'testDB');
+	, db = mongoose.createConnection(process.env.npm_package_config_mongodb_host, process.env.npm_package_config_DBname); // 192.168.107.125
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {

@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "benchmark": "1.0.x",
+    "async": "0.1.x",
     "mongodb": "1.1.x",
     "mongoose": "3.3.x",
     "mongoskin": "0.4.x",
@@ -21,12 +22,26 @@
     "nano": "3.3.x",
     "cradle": "0.6.x",
     "cassandra-client": "0.9.x"
-
   },
   "devDependencies": {
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "retrieve": "node ./models/retrieve.js"
+  },
+  "config": {
+    "DBname": "test",
+    "mongodb_host": "localhost",
+    "mongodb_port": 27017,
+    "cassandra_host": "localhost",
+    "cassandra_port": 9160,
+    "cassandra_user": "",
+    "cassandra_password": "",
+    "cassandra_keyspace_name": "testDB",
+    "cassandra_keyspace_strategy_class": "org.apache.cassandra.locator.NetworkTopologyStrategy",
+    "cassandra_keyspace_replication_factor": 1,
+    "cassandra_keyspace_cf_defs": [],
+    "cassandra_keyspace_durable_writes": true
   },
   "main": "index"
 }
