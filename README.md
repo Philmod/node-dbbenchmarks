@@ -19,7 +19,8 @@ mongoskin:      1944 ins/sec
 cassandra 1:    990  ins/sec (one row by document, one column for each data)
 cassandra 2:    1638 ins/sec (only one big row, one document by column (JSON format))
 ```
-I notice than the Cassandra machine reachs the CPU limit, and uses a lot of RAM (already without data, because of JAVA machine).  I have to try to modify the config.
+I notice than the Cassandra machine reachs the CPU limit, and uses a lot of RAM (already without data, because of JAVA machine), it's why the results are bad.  I have to try to modify the config.
+
 Mongoose uses more RAM on the client machine, but then less RAM is used on the DB machine.
 
 ## ToDo
