@@ -10,6 +10,6 @@ exports.doc = function() {
 
 ///// DBs /////
 exports.mongodb = require('./mongodb/index.js');
-exports.couchdb = require('./couchdb/index.js');
+// exports.couchdb = require('./couchdb/index.js');
 exports.cassandra = require('./cassandra/index.js');
 ///////////////

@@ -1,20 +1,13 @@
 /**
  * Module dependencies.
  */
-var Benchmark = require('benchmark')
-	, suite = new Benchmark.Suite
-	, models = require('./models')
+var models = require('./models')
 	, async = require('async');
 
 /**
  * Options.
  */
-var options = {
-		'async': true
-	,	'maxTime': 5 //[secs]
-	, 'defer': true
-};
-var nb = 1000;
+var nb = 50000;
 
 /**
  * Variables.
@@ -72,7 +65,7 @@ setTimeout(function() {
 			  , j = 0;
 			for(var i = 0; i < nb; i++)
 			  (function(e){
-			  	models.mongodb.mongodb.insert(new models.doc, function(err,res) {
+			  	models.mongodb.mongoskin.insert(new models.doc, function(err,res) {
 					  if (err) callback(err,null);
 					  else {
 					  	if(++j == nb) {
@@ -86,7 +79,7 @@ setTimeout(function() {
 			})(i);
     },
     function(callback){ // 11. NANO
-      var start_time = new Date()
+      /*var start_time = new Date()
 			  , j = 0;
 			for(var i = 0; i < nb; i++)
 			  (function(e){
@@ -101,7 +94,8 @@ setTimeout(function() {
 				      }
 					  }
 					});
-			})(i);
+			})(i);*/
+			callback(null,null);
     },
     function(callback){ // 21. CASSANDRA-CLIENT : cassandra obj write, different keys
       var start_time = new Date()
@@ -149,81 +143,5 @@ setTimeout(function() {
 		else console.log('%o',results);
 	});
 	
-
-
-	////////////////////////////////////
-
-	/*var bench = new Benchmark('foo', {
-
-	  // a flag to indicate the benchmark is deferred
-	  'defer': true,
-
-	  // benchmark test function
-	  'fn': function(deferred) {
-	  	doc = new models.mongodb.mongoose.Doc(new models.doc);
-		  console.log('1 : start');
-			doc.save(function (err) {
-			  if (err) console.error('ERROR mongoose : ' + err);
-			  else { console.log('1 : stop'); }
-			  deferred.resolve(); // call resolve() when the deferred test is finished
-			});
-	  }
-	})
-	.on('complete', function() {
-	  console.log('Result : ' + this);
-	})
-	.run();*/
-
-	////////////////////////////////////
-
-	/*suite // add tests
-		.add('mongoose write', function(deferred) {
-		  doc = new models.mongodb.mongoose.Doc(new models.doc);
-		  console.log('1 : start');
-			doc.save(function (err) {
-			  if (err) console.error('ERROR mongoose : ' + err);
-			  else { console.log('1 : stop'); }
-			  deferred.resolve();
-			});
-		})
-		.add('mongodb-native write', function(deferred) {
-			console.log('2 : start');
-		  models.mongodb.mongodb.insert(new models.doc, function(err,res) {
-				if (err) console.error('ERROR mongo native : ' + err);
-				else { console.log('2 : stop'); }
-				deferred.resolve();
-			});
-		})
-		.add('cassandra obj write, different keys', function() {
-		  doc = new models.doc();
-			paramsSelect = ['docs','name', doc.name, 'description', doc.description, 'date', doc.date, 'num', doc.num, 'content', doc.content, 'tags', doc.tags, ++i];
-			models.cassandra.cassandraConnection.execute('UPDATE ? SET ?=?, ?=?, ?=?, ?=?, ?=?, ?=? WHERE key=?', paramsSelect, function(err,rows) {
-				if (err) console.error('Cassandra error : ' + err);
-				else return;
-			});
-		})
-		.add('cassandra JSON obj write, same key, different columns', function() {
-		  doc = new models.doc();
-			paramsSelect = ['docs',++i, JSON.stringify(doc), 'sameKey'];
-			models.cassandra.cassandraConnection.execute('UPDATE ? SET ?=? WHERE key=?', paramsSelect, function(err,rows) {
-				if (err) console.error('Cassandra error : ' + err);
-				else return;
-			});
-		})
-		// add listeners
-		.on('cycle', function(event) {
-		  console.log(String(event.target));
-		})
-		.on('error', function(err) {
-			console.error('ERROR : ' + err);
-		})
-		.on('complete', function() {
-		  console.log('Fastest is ' + this.filter('fastest').pluck('name'));
-		})
-		// run async
-		.run(options);*/
-
-		////////////////////////////////////
-
 },1000);
 

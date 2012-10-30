@@ -1,6 +1,7 @@
 var mongo = require('mongoskin');
-var db = mongo.db('localhost:27017/'+process.env.npm_package_config_DBname+'?auto_reconnect', {safe: true});
+
+var db_skin = mongo.db(process.env.npm_package_config_mongodb_host+':'+process.env.npm_package_config_mongodb_port+'/'+process.env.npm_package_config_DBname+'_mongoskin'+'?auto_reconnect', {safe: true});
 
 exports.insert = function(doc,callback) {
-	db.collection('docs',doc,callback);
+	db_skin.collection('docs').insert(doc,callback);
 };

@@ -27,17 +27,17 @@
   },
   "scripts": {
     "start": "node index.js",
+    "start-test": "node temp.js",
     "retrieve": "node ./models/retrieve.js"
   },
   "config": {
-    "DBname": "test",
-    "mongodb_host": "localhost",
+    "DBname": "testDB",
+    "mongodb_host": "192.168.107.125",
     "mongodb_port": 27017,
-    "cassandra_host": "localhost",
+    "cassandra_host": "192.168.107.124",
     "cassandra_port": 9160,
     "cassandra_user": "",
     "cassandra_password": "",
-    "cassandra_keyspace_name": "testDB",
     "cassandra_keyspace_strategy_class": "org.apache.cassandra.locator.NetworkTopologyStrategy",
     "cassandra_keyspace_replication_factor": 1,
     "cassandra_keyspace_cf_defs": [],
